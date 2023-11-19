@@ -1,25 +1,37 @@
 {
-  "name": "ip",
-  "version": "2.0.0",
-  "author": "Fedor Indutny <fedor@indutny.com>",
-  "homepage": "https://github.com/indutny/node-ip",
-  "repository": {
-    "type": "git",
-    "url": "http://github.com/indutny/node-ip.git"
-  },
-  "files": [
-    "lib",
-    "README.md"
-  ],
-  "main": "lib/ip",
-  "devDependencies": {
-    "eslint": "^8.15.0",
-    "mocha": "^10.0.0"
-  },
-  "scripts": {
-    "lint": "eslint lib/*.js test/*.js",
-    "test": "npm run lint && mocha --reporter spec test/*-test.js",
-    "fix": "npm run lint -- --fix"
-  },
-  "license": "MIT"
+	"name": "ip",
+	"version": "2.0.0",
+	"homepage": "https://github.com/indutny/node-ip",
+	"private": false,
+	"description": "Node IP is a powerful IP address validation utility package for JavaScript and TypeScript. This package excels in providing an easy-to-use, yet comprehensive, solution for validating IP addresses in various contexts.",
+	"main": "./dist/index.js",
+	"types": "./dist/index.d.ts",
+	"module": "./dist/index.mjs",
+	"scripts": {
+		"build": "tsup",
+		"type-check": "tsc",
+		"dev": "vitest",
+		"test": "vitest run",
+		"ci": "pnpm type-check && pnpm test && pnpm build",
+		"release": "pnpm type-check && pnpm test && pnpm build && changeset publish"
+	},
+	"keywords": [],
+	"license": "MIT",
+	"author": "Fedor Indutny <fedor@indutny.com>",
+	"devDependencies": {
+		"@types/node": "^20.9.2",
+		"@typescript-eslint/eslint-plugin": "^6.11.0",
+		"@typescript-eslint/parser": "^6.11.0",
+		"eslint": "^8.54.0",
+		"eslint-config-prettier": "^9.0.0",
+		"eslint-plugin-prettier": "^5.0.1",
+		"mocha": "^10.0.0",
+		"prettier": "^3.1.0",
+		"tsup": "^8.0.0",
+		"typescript": "^5.2.2"
+	},
+	"repository": {
+		"type": "git",
+		"url": "http://github.com/indutny/node-ip.git"
+	}
 }
