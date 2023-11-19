@@ -9,9 +9,13 @@
 	"module": "./dist/index.mjs",
 	"scripts": {
 		"build": "tsup",
-		"type-check": "tsc",
-		"dev": "vitest",
+		"dev": "tsup --watch",
 		"test": "vitest run",
+		"test:watch": "vitest",
+		"type-check": "tsc",
+		"format": "pnpm prettier ./src --write",
+		"lint": "pnpm eslint ./src",
+		"fix:format": "pnpm format && pnpm eslint ./src --fix",
 		"ci": "pnpm type-check && pnpm test && pnpm build",
 		"release": "pnpm type-check && pnpm test && pnpm build && changeset publish"
 	},
