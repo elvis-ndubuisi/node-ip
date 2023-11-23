@@ -17,7 +17,8 @@
 		"lint": "pnpm eslint ./src",
 		"fix:format": "pnpm format && pnpm eslint ./src --fix",
 		"ci": "pnpm type-check && pnpm test && pnpm build",
-		"release": "pnpm type-check && pnpm test && pnpm build && changeset publish"
+		"release": "pnpm type-check && pnpm test && pnpm build && changeset publish",
+		"example":"node dist/index.js"
 	},
 	"keywords": [],
 	"license": "MIT",
@@ -32,7 +33,8 @@
 		"mocha": "^10.0.0",
 		"prettier": "^3.1.0",
 		"tsup": "^8.0.0",
-		"typescript": "^5.2.2"
+		"typescript": "^5.2.2",
+		"vitest": "^0.34.6"
 	},
 	"repository": {
 		"type": "git",
