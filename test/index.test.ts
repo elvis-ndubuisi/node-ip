@@ -1,10 +1,7 @@
 import {describe, it, expect} from 'vitest';
 import nodeIP from '../src';
 import {normalizeFamily} from '../src';
-import {skip} from 'node:test';
 
-// describe('NodeIP library', () => {
-// });
 describe('Validate IP format', () => {
 	describe('v4', () => {
 		it('should pass IPv4 validation & return true', () => {

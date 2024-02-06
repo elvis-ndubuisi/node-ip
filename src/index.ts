@@ -95,39 +95,39 @@ const toString = (buffer: Buffer, offset: number, length?: number): string => {
 		throw new Error('Invalid offset and length combination, exceeds buffer size.');
 	}
 
-	const portion = buffer.subarray(offset, offset + length); // Extract portion of the buffer
+	// const portion = buffer.subarray(offset, offset + length); // Extract portion of the buffer
 
-	if(portion.length === 4){}else if(portion.length === 16){}else {
+	// if(portion.length === 4){}else if(portion.length === 16){}else {
 
-	}
-
-	// let result: string | string[] = [];
-
-	// if (length === 4) {
-	// 	// IPv4
-	// 	// for (let i = 0; i < length; i++) {
-	// 	// result.push(buffer[offset + i].toString());
-	// 	// }
-	// 	// result = result.join('.');
-	// 	result = Array.from(slice).join('.');
-	// } else if (length === 16) {
-	// 	// IPv6
-	// 	for (let i = 0; i < length; i += 2) {
-	// 		result.push(buffer.readUInt16BE(offset + i).toString(16));
-	// 		// if (offset + i + 1 < buffer.length) {
-	// 		// result.push(buffer.readUInt16BE(offset + i).toString(16));
-	// 		// }
-	// 	}
-	// 	result = result.join(':');
-
-	// 	// IPv6 Compression Handling
-	// 	result = result.replace(/(^|(?<=:))0(?=:|$)/g, ''); // Remove leading zeros
-	// 	result = result.replace(/:{2,}/g, '::'); // Replace multiple colons with '::'
-	// } else {
-	// 	throw new Error('Unsupported length for string conversion');
 	// }
 
-	// return result as string;
+	let result: string | string[] = [];
+
+	if (length === 4) {
+		// IPv4
+		// for (let i = 0; i < length; i++) {
+		// result.push(buffer[offset + i].toString());
+		// }
+		// result = result.join('.');
+		result = Array.from(slice).join('.');
+	} else if (length === 16) {
+		// IPv6
+		for (let i = 0; i < length; i += 2) {
+			result.push(buffer.readUInt16BE(offset + i).toString(16));
+			// if (offset + i + 1 < buffer.length) {
+			// result.push(buffer.readUInt16BE(offset + i).toString(16));
+			// }
+		}
+		result = result.join(':');
+
+		// IPv6 Compression Handling
+		result = result.replace(/(^|(?<=:))0(?=:|$)/g, ''); // Remove leading zeros
+		result = result.replace(/:{2,}/g, '::'); // Replace multiple colons with '::'
+	} else {
+		throw new Error('Unsupported length for string conversion');
+	}
+
+	return result as string;
 };
 
 /**
